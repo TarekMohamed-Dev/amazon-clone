@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage":"https://amazon-clone-e4ei4hkpf-tarek-mohameds-projects.vercel.app/"
   "scripts": {
     "dev": "vite",
     "build": "vite build",
