@@ -32,7 +32,7 @@ const ProductFeed = () => {
                     image={image}
                 />
             ))}
-            <img className="md:col-span-full" src="/public/ads.jpg" alt="ads" />
+            <img className="md:col-span-full" src="./ads.jpg" alt="ads" />
 
         <div className="md:col-span-2">
                 {products.slice(4, 5).map(({ id, title, price, description, category, image }) => (

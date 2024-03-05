@@ -13,7 +13,7 @@ const Checkout = () => {
             <main className="lg:flex">
                 {/* left */}
                 <div className="flex-grow m-5 shadow-sm">
-                    <img src="/public/Prime-day-banner.webp" width={1020} height={250} className="object-contain" />
+                    <img src="./Prime-day-banner.webp" width={1020} height={250} className="object-contain" />
 
                     <div className="flex flex-col p-5 space-y-10 bg-white">
                         <h2 className="text-2xl">Hello, {user ? `${user.email.split("@")[0]}` : "Sign In"}</h2>
