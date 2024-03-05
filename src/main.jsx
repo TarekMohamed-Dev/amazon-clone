@@ -7,7 +7,7 @@ import GlobalProvider from "./context/GlobalState"
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Router basename="/">
+    <Router>
       <GlobalProvider>
         <App />
       </GlobalProvider>
