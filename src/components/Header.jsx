@@ -8,13 +8,15 @@ const Header = () => {
   const handleAuthentication = () => {
     auth.signOut();
   };
-
+  const refresh = () => {
+    window.location.reload();
+}
   return (
     <header className="sticky top-0 z-50 bg-amazon_blue">
       {/* Top nav */}
       <div className="flex items-center p-1 py-2 h-[64px]">
         {/* Logo */}
-        <div className="flex items-center flex-grow sm:flex-grow-0 ms-3 me-5">
+        <div className="flex items-center flex-grow sm:flex-grow-0 ms-3 me-5" onClick={refresh}>
           <Link to={"/"}>
             <img
               src="/amazon-logo.png"

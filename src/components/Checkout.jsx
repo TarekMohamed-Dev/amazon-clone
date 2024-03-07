@@ -30,6 +30,8 @@ const Checkout = () => {
                                     description={item.description}
                                     category={item.category}
                                     hasPrime={item.hasPrime}
+                                    width={item.width}
+                                    height={item.height}
                                 />
                             ))
                         }

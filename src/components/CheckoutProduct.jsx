@@ -1,9 +1,9 @@
 import CurrencyFormat from "react-currency-format"
 import { FaStar } from "react-icons/fa"
 import { useAuth } from "../context/GlobalState";
-
+import { getCheckoutProductContainerClass, getCheckoutProductButtonClass,getCheckoutProductImgClass } from "./DesignUtility";
 // eslint-disable-next-line react/prop-types
-const CheckoutProduct = ({ id, title, price, rating, description, category, image, hasPrime }) => {
+const CheckoutProduct = ({ id, title, price, rating, description, category, image, hasPrime, width,height, designVariant }) => {
     const { dispatch } = useAuth();
     const addToBasket = () => {
         dispatch({
@@ -17,6 +17,8 @@ const CheckoutProduct = ({ id, title, price, rating, description, category, imag
                 image: image,
                 rating: rating,
                 hasPrime: "/prime.png",
+                width: 200,
+                height:200
             }
         })
     }
@@ -24,11 +26,14 @@ const CheckoutProduct = ({ id, title, price, rating, description, category, imag
         dispatch({
             type: "REMOVE_FROM_BASKET",
             id: id
-    })
+        })
     }
+    const containerClass = getCheckoutProductContainerClass(designVariant);
+    const buttonClass = getCheckoutProductButtonClass(designVariant);
+    const classPaymentImg = getCheckoutProductImgClass(designVariant)
     return (
-        <div className="grid grid-cols-5">
-            <img width={200} height={200} src={image} alt={title} />
+        <div className={containerClass}>
+            <img className={ classPaymentImg } width={width} height={height} src={image} alt={title} />
 
             {/* middle section */}
             <div className="col-span-3 mx-5">
@@ -48,9 +53,9 @@ const CheckoutProduct = ({ id, title, price, rating, description, category, imag
                 )}
             </div>
             {/* Right Add/Remove btn */}
-        <div className="flex flex-col space-y-2 my-auto justify-self-end">
-                <button className="button" onClick={addToBasket}>Add to Basket</button>
-            <button className="button" onClick={removeFromBasket}>Remove From Basket</button>
+            <div className="flex flex-col space-y-2 my-auto justify-self-end">
+                <button className={buttonClass} onClick={addToBasket}>Add to Basket</button>
+                <button className={buttonClass} onClick={removeFromBasket}>Remove From Basket</button>
             </div>
 
 
