@@ -1,16 +1,21 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/GlobalState";
 import { auth } from "../firebase";
-
-const Header = () => {
+import { useState } from 'react';
+// eslint-disable-next-line react/prop-types
+const Header = ({ handleSearch }) => {
   const { user,basket } = useAuth();
-
+  const [searchQuery, setSearchQuery] = useState('');
   const handleAuthentication = () => {
     auth.signOut();
   };
   const refresh = () => {
     window.location.reload();
-}
+  }
+  const handleChange = (e) => {
+    setSearchQuery(e.target.value);
+    handleSearch(e.target.value); // Pass the search query to ProductFeed
+};
   return (
     <header className="sticky top-0 z-50 bg-amazon_blue">
       {/* Top nav */}
@@ -31,6 +36,8 @@ const Header = () => {
         {/* Search */}
         <div className="hidden sm:flex bg-yellow-400 hover:bg-yellow-500 items-center h-10 rounded-md flex-grow cursor-pointer">
           <input
+            value={searchQuery}
+            onChange={handleChange}
             className="p-2 h-full w-6 flex-grow flex-shrink rounded-l-md focus:outline-none px-4"
             type="text"
             placeholder="Search..."

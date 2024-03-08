@@ -1,6 +1,5 @@
 import Header from "./components/Header";
-import Banner from "./components/Banner";
-import ProductFeed from "./components/ProductFeed";
+import Home from "./components/Home";
 import Checkout from "./components/Checkout";
 import { Route, Routes } from "react-router-dom";
 import Login from "./components/Login";
@@ -11,6 +10,7 @@ import Payment from "./components/Payment";
 import Orders from "./components/Orders";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
+
 
 const App = () => {
   const { dispatch } = useAuth();
@@ -29,13 +29,8 @@ const App = () => {
     <div>
       <Routes>
         <Route path="/" element={
-          <div>
-            <Header />
             <div className="max-w-screen-2xl mx-auto">
-              <Banner />
-              <ProductFeed />
-            </div>
-
+              <Home />
           </div>
         } />
         <Route path="/login" element={<Login />} />
