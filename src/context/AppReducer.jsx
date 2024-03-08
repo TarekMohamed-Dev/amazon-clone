@@ -1,4 +1,6 @@
 /* eslint-disable no-case-declarations */
+/* eslint-disable react-refresh/only-export-components */
+
 export const getBasketTotal = (basket) => {
     return basket.reduce((amount, item) => {
         return amount + item.price;
