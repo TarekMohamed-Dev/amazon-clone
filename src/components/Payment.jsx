@@ -1,24 +1,31 @@
 import { Link, useNavigate } from "react-router-dom"
 import { useAuth } from "../context/GlobalState"
 import CurrencyFormat from "react-currency-format"
-import { getBasketTotal } from "../context/AppReducer"
-import CheckoutProduct from "./CheckoutProduct"
+import { getBasketTotal } from "../context/AppReducer" // Import getBasketTotal function from AppReducer
+import CheckoutProduct from "../components/Checkout/CheckoutProduct"
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js"
 import { useEffect, useState } from 'react';
 import axios from "./axios"
 import { doc, setDoc } from "firebase/firestore"
 import { db } from "../firebase"
+
+/**
+ * Payment component for handling payment process.
+ */
+
 const Payment = () => {
-  const { user, basket, dispatch } = useAuth()
-  const designVariant = 'payment'
-  const [clientSecret, setClientSecret] = useState()
-  const [error, setError] = useState(null)
-  const [disabled, setDisabled] = useState(true)
-  const [succeeded, setSucceeded] = useState(false)
-  const [processing, setProcessing] = useState("")
-  const stripe = useStripe()
-  const elements = useElements()
+  const { user, basket, dispatch } = useAuth()// Destructure user, basket, and dispatch from useAuth hook
+  const designVariant = 'payment' // Design variant from CheckoutProduct component to payment edit
+  const [clientSecret, setClientSecret] = useState() // State for client secret
+  const [error, setError] = useState(null) // State for error
+  const [disabled, setDisabled] = useState(true) // State for disabled state of payment button
+  const [succeeded, setSucceeded] = useState(false) // State for payment success
+  const [processing, setProcessing] = useState("") // State for processing state of payment
+  const stripe = useStripe() // Stripe instance
+  const elements = useElements() // Elements instance
   const navigate = useNavigate()
+
+  // Effect to fetch client secret for payment
   useEffect(() => {
     const getClientSecret = async () => {
       const response = await axios({
@@ -31,15 +38,18 @@ const Payment = () => {
     getClientSecret()
   }, [basket])
 
+  // Handle submission of payment form
   const handleSubmit = async (e) => {
     e.preventDefault()
     setProcessing(true)
-    // eslint-disable-next-line no-unused-vars
+
+    // Confirm card payment with Stripe
     const payload = await stripe.confirmCardPayment(clientSecret, {
       payment_method: {
         card: elements.getElement(CardElement)
       }
     }).then(({ paymentIntent }) => {
+      // Add order details to Firestore
       const ref = doc(db, "users", user?.uid, "orders", paymentIntent.id)
       setDoc(ref, {
         basket: basket,
@@ -49,13 +59,14 @@ const Payment = () => {
       setSucceeded(true)
       setError(null)
       setProcessing(false)
-      navigate("/orders", { replace: true })
+      navigate("/orders", { replace: true }) // Redirect to orders page
       dispatch({
         type: "EMPTY_BASKET"
       })
     })
 
   }
+  // Handle change in CardElement
   const handleChange = (e) => {
     setDisabled(e.empty)
     setError(error ? error.message : "")

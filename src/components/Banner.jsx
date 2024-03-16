@@ -1,22 +1,21 @@
-
-
 import { Swiper, SwiperSlide } from 'swiper/react';
-
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-
 import './styles.css';
-
-// import required modules
 import { EffectFade, Navigation, Autoplay } from 'swiper/modules';
 
+/**
+ * Banner component displays a slideshow using Swiper library.
+ * @returns {JSX.Element} Banner component
+ */
 const Banner = () => {
     return (
         <div className="relative">
-            <div className="absolute w-full h-32 bg-gradient-to-t from-gray-100 to-transparent bottom-0 z-20" />
+            {/* Gradient overlay */}
+            <div className="absolute w-full h-10 sm:h-52 bg-gradient-to-t from-gray-100 to-transparent bottom-0 z-20" />
+            {/* Swiper container */}
             <Swiper
                 loop={true}
                 spaceBetween={30}
@@ -29,24 +28,34 @@ const Banner = () => {
                 }}
                 className="mySwiper"
             >
+                {/* Slides */}
                 <SwiperSlide>
-                    <img src="./b1.jpg" alt="logo" />
+                    <img src="./b1.jpg" alt="Slide 1" />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img src="./b2.jpg" alt="logo" />
+                    <img src="./b2.jpg" alt="Slide 2" />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img src="./b3.jpg" alt="logo" />
+                    <img src="./b3.jpg" alt="Slide 3" />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img src="./smith.jpg" alt="logo" />
+                    <img src="./smith.jpg" alt="Slide 4" />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img src="./clinic.jpg" alt="logo" />
+                    <img src="./clinic.jpg" alt="Slide 5" />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img src="./b6.jpg" alt="Slide 6" />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img src="./b5.jpg" alt="Slide 7" />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img src="./bannar.jpg" alt="Slide 8" />
                 </SwiperSlide>
             </Swiper>
         </div>
     )
 }
 
-export default Banner
+export default Banner;

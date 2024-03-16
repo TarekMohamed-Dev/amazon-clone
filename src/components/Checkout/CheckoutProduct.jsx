@@ -1,7 +1,7 @@
 import CurrencyFormat from "react-currency-format"
 import { FaStar } from "react-icons/fa"
-import { useAuth } from "../context/GlobalState";
-import { getCheckoutProductContainerClass, getCheckoutProductButtonClass,getCheckoutProductImgClass } from "./DesignUtility";
+import { useAuth } from "../../context/GlobalState";
+import { getCheckoutProductContainerClass, getCheckoutProductButtonClass,getCheckoutProductImgClass } from "../DesignUtility";
 // eslint-disable-next-line react/prop-types
 const CheckoutProduct = ({ id, title, price, rating, description, category, image, hasPrime, width,height, designVariant }) => {
     const { dispatch } = useAuth();
