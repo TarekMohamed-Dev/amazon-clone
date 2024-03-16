@@ -1,8 +1,34 @@
-# React + Vite
+# Amazon - Clone using ReactJs
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Project Link** - ***https://clone-b2d87.web.app/***
 
-Currently, two official plugins are available:
+## Tech We Used
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- ReactJs
+- Firebase Hosting
+- Firebase Auth
+- Firebase Storage
+- React-Dom
+- UseReducer
+- Stripe payment
+
+## Features
+
+- Login and Logout
+- Add to cart
+- Remove from cart
+- Payment
+- Neat and clean UI
+- Dark Mode
+- Responsive
+
+## Steps to run in your machine
+
+#### Run the following commands
+
+```
+npm i
+npm run dev
+```
+
+#### Hope you liked this project, dont forget to ⭐ the repo.
